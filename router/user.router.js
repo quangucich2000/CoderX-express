@@ -10,6 +10,7 @@ router.get('/', authMiddleware.requireAuth, controller.index);
 
 router.get('/cookie', function(req, res, next){
 	res.cookie('user-id', 12345);
+	res.send('Hello')
 })
 
 
