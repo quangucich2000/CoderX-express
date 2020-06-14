@@ -33,8 +33,7 @@ module.exports.getId = function(req, res){
 }
 
 module.exports.postCreat = function(req, res){
-	req.body.id = shortid.generate();
-
+	
 	var errors = [];
 	if(!req.body.name){
 		errors.push('Name is required');
@@ -50,6 +49,9 @@ module.exports.postCreat = function(req, res){
 		});
 		return;
 	}
+
+	req.body.id = shortid.generate();
+	req.body.avatar = req.file.path.split('\\').slice(1).join('\\')
 
 	db.get('users').push(req.body).write();
 	res.redirect('/user');

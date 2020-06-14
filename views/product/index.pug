@@ -1,0 +1,37 @@
+extends ../layout/common.pug
+
+block content
+
+	h1
+		span Products
+		a.btn.btn-primary.ml-2(href="/product/create") New product
+	div.row.mt-5
+		each product in products
+			div.col-sm-6.col-md-4.col-lg-3
+				.card.mb-3.shadow-sm
+					img.card-img-top(src= product.image)
+					div.card-body
+						h5.card-title= product.name
+						p.card-text= product.description
+						a.btn.btn-primary.text-light= product.price
+	div.row.mt-5
+		nav.mx-auto
+			ul.pagination.pagination-sm
+				li.page-item
+					a(href='/product?page=1').page-link
+						span &laquo; 
+
+				each page in pagesLeft
+					li.page-item
+						a(href='/product?page='+page).page-link= page
+				
+				li.page-item.active
+					a(href='/product?page='+pageNow).page-link= pageNow
+				
+				each page in pagesRight
+					li.page-item
+						a(href='/product?page='+page).page-link= page
+
+				li.page-item
+					a(href='/product?page='+pageEnd).page-link
+						span &raquo; 

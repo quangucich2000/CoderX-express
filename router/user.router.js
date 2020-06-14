@@ -1,7 +1,10 @@
 var express = require('express');
+var multer = require('multer');
 
 var controller = require('../controllers/user.controller.js')
 var authMiddleware = require('../middleware/auth.middleware.js')
+
+var upload = multer({ dest: './public/uploads/' })
 
 var router = express.Router();
 
@@ -28,7 +31,7 @@ router.get('/:id', controller.getId);
 
 
 //add new-------------/user/create---------
-router.post('/create', controller.postCreat);
+router.post('/create', upload.single('avatar'), controller.postCreat);
 
 
 module.exports = router;

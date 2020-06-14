@@ -1,21 +1,32 @@
 html
 	head
 		link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css")
+		<!-- JS, Popper.js, and jQuery -->
+		script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js', integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj', crossorigin='anonymous')
+		script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo', crossorigin='anonymous')
+		script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js', integrity='sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI', crossorigin='anonymous')
+	
 	body
 		nav.navbar.navbar-dark.bg-dark.navbar-expand-lg
 			a.navbar-brand(href="/") Logo
 			button.navbar-toggler(data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation")
 				span.navbar-toggler-icon
 			div.collapse.navbar-collapse#navbarSupportedContent
-				ul.navbar-nav.mr-auto
-					li.nav-item.active
-						a.nav-link(href="/") Home
-					li.nav-item.active
-						a.nav-link(href="/user/create") Creat
-					li.nav-item.active
-						a.nav-link(href="/user") User
-					li.nav-item.active
-						a.nav-link(href="/auth/login") Login
+				ul.navbar-nav.mr-auto.d-flex.justify-content-between(style="width: 100%")
+					ul.nav.d-flex.justify-content-around
+						li.nav-item.active
+							a.nav-link(href="/") Home
+						li.nav-item.active
+							a.nav-link(href="/product") Product
+						li.nav-item.active
+							a.nav-link(href="/product/create") Add product
+					ul.nav.d-flex.justify-content-around
+						li.nav-item.active
+							a.nav-link(href="/user") User
+						li.nav-item.active
+							a.nav-link(href="/auth/login") Login
+						li.nav-item.active
+							a.nav-link(href="/user/create") Creat
 				if user
 					span.badge.badge-primary= user.name
 		div.container.pt-5
